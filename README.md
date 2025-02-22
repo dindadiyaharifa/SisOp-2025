@@ -11,7 +11,7 @@ b. Bilangan hexsadesimal adalah bilangan yang berbasis = 16 (enam belas)
 
 ## 2. Konversi bilangan decimal di bawah ini ke dalam bilangan biner
 
-a. 1234~10~ = 10011010010  
+a. 123410~ = 10011010010  
 
 > **Caranya:**  
 > 1234/2 = 617 sisa 0  
@@ -26,7 +26,7 @@ a. 1234~10~ = 10011010010
 > 2/2 = 1 sisa 0  
 > Diurutkan dari hasil sisa paling akhir ke awal yaitu 10011010010  
 
-b. 5670~10~ = 1011000100110  
+b. 567010~ = 1011000100110  
 
 > 5670/2 = 2835 sisa 0  
 > 2835/2 = 1417 sisa 1  
@@ -42,7 +42,7 @@ b. 5670~10~ = 1011000100110
 > 2/2 = 1 sisa 0  
 > Diurutkan dari hasil sisa paling akhir ke awal yaitu 1011000100110  
 
-c. 2321~10~ = 100100010001  
+c. 232110~ = 100100010001  
 
 > 2321/2 = 1160 sisa 1  
 > 1160/2 = 580 sisa 0  
