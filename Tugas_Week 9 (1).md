@@ -155,19 +155,3 @@ int main() {
 - [thrd-posix.c](https://github.com/ferryastika/osc10e/blob/master/ch4/thrd-posix.c)
 - [thrd-win32.c](https://github.com/ferryastika/osc10e/blob/master/ch4/thrd-win32.c)
 
-**Kesimpulan:**
-Pemilihan implementasi thread tergantung pada platform target. POSIX lebih portable sedangkan WinAPI memberikan integrasi lebih baik dengan sistem Windows.
-
----
-
-## Lampiran
-
-### Struktur Repository
-```bash
-osc10e/
-└── ch4/
-    ├── SumTask.java
-    ├── thrd-posix.c
-    └── thrd-win32.c
-```
-
