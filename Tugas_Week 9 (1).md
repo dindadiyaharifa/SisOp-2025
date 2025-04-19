@@ -20,11 +20,17 @@ Multithread memungkinkan program menjalankan beberapa thread secara paralel dala
 ## 2.	Kerjakan Programming Exercise
 **Jawab:**  
 git clone https://github.com/ferryastika/osc10e.git
+
 cd osc10e
+
 git pull origin master
+
 cd ch4
+
 javac SumTask.java
+
 java SumTask
+
 ```java
 import java.util.concurrent.*;
 
