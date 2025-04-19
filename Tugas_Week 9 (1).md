@@ -225,7 +225,3 @@ Saat melakukan context switch antar kernel-level thread, kernel melakukan langka
 
 
 ---
-**Implementasi pada GitHub Pak Ferry:**
-- [thrd-posix.c](https://github.com/ferryastika/osc10e/blob/master/ch4/thrd-posix.c)
-- [thrd-win32.c](https://github.com/ferryastika/osc10e/blob/master/ch4/thrd-win32.c)
-
