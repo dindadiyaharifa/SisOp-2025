@@ -17,20 +17,13 @@ Multithread memungkinkan program menjalankan beberapa thread secara paralel dala
 
 ![Single vs Multi Thread](https://www.mahirkoding.com/wp-content/uploads/2017/11/Review_Singlevs.Multi-ThreadedProcesses.jpg)
 
-## 2.	Kerjakan Programming Exercise
-**Jawab:**  
-git clone https://github.com/ferryastika/osc10e.git
+ubah ke md file text berikut Berikut template jawaban dalam format Markdown (`.md`) untuk Programming Exercise tentang thread:
 
-cd osc10e
+## 2. Programming Exercise: Thread Implementation
 
-git pull origin master
+## A. Penerapan Thread pada SumTask.java
 
-cd ch4
-
-javac SumTask.java
-
-java SumTask
-
+### Kode Implementasi
 ```java
 import java.util.concurrent.*;
 
@@ -39,6 +32,7 @@ class SumTask implements Runnable {
     private int start, end;
     private long partialSum;
 
+    // Constructor
     public SumTask(int[] array, int start, int end) {
         this.array = array;
         this.start = start;
@@ -58,17 +52,15 @@ class SumTask implements Runnable {
     }
 }
 
-public class SumTask {
+public class ParallelSum {
     public static void main(String[] args) throws InterruptedException {
-        int[] array = new int[1000];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = i + 1;
-        }
+        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int threadCount = 2;
         
-        int threadCount = 4;
         ExecutorService executor = Executors.newFixedThreadPool(threadCount);
         SumTask[] tasks = new SumTask[threadCount];
 
+        // Pembagian tugas
         for (int i = 0; i < threadCount; i++) {
             int start = i * (array.length / threadCount);
             int end = (i == threadCount - 1) ? array.length : start + (array.length / threadCount);
@@ -79,11 +71,103 @@ public class SumTask {
         executor.shutdown();
         executor.awaitTermination(1, TimeUnit.MINUTES);
 
+        // Penggabungan hasil
         long totalSum = 0;
         for (SumTask task : tasks) {
             totalSum += task.getPartialSum();
         }
-        System.out.println("The sum is " + totalSum);
+        
+        System.out.println("Total Sum: " + totalSum);
     }
 }
+```
+
+### Penjelasan
+- **Mekanisme**:
+  - Array dibagi rata ke beberapa thread
+  - `ExecutorService` mengelola thread pool
+- **Keunggulan**:
+  - Pemanfaatan multi-core processor
+  - Waktu eksekusi lebih cepat untuk data besar
+- **Hasil Eksekusi**:
+  ```bash
+  javac ParallelSum.java
+  java ParallelSum
+  ```
+  Output: `Total Sum: 55`
+
 ---
+
+## B. Penerapan Thread di Linux dan Windows
+
+### 1. POSIX Threads (Linux) - thrd-posix.c
+```c
+#include <pthread.h>
+#include <stdio.h>
+
+void* task(void* arg) {
+    printf("Thread berjalan di Linux\n");
+    pthread_exit(NULL);
+}
+
+int main() {
+    pthread_t thread;
+    pthread_create(&thread, NULL, task, NULL);
+    pthread_join(thread, NULL);
+    return 0;
+}
+```
+
+### 2. WinAPI Threads (Windows) - thrd-win32.c
+```c
+#include <windows.h>
+#include <stdio.h>
+
+DWORD WINAPI task(LPVOID lpParam) {
+    printf("Thread berjalan di Windows\n");
+    return 0;
+}
+
+int main() {
+    HANDLE thread = CreateThread(NULL, 0, task, NULL, 0, NULL);
+    WaitForSingleObject(thread, INFINITE);
+    CloseHandle(thread);
+    return 0;
+}
+```
+
+### C Essay Perbandingan
+
+**Perbedaan Utama:**
+1. **Library**:
+   - POSIX menggunakan `<pthread.h>`
+   - WinAPI menggunakan `<windows.h>`
+
+2. **Portabilitas**:
+   - POSIX thread dapat berjalan di berbagai sistem UNIX-like
+   - WinAPI hanya untuk Windows
+
+3. **Manajemen Thread**:
+   - POSIX menggunakan `pthread_t` sebagai identifier
+   - WinAPI menggunakan `HANDLE`
+
+**Implementasi pada GitHub Pak Ferry:**
+- [thrd-posix.c](https://github.com/ferryastika/osc10e/blob/master/ch4/thrd-posix.c)
+- [thrd-win32.c](https://github.com/ferryastika/osc10e/blob/master/ch4/thrd-win32.c)
+
+**Kesimpulan:**
+Pemilihan implementasi thread tergantung pada platform target. POSIX lebih portable sedangkan WinAPI memberikan integrasi lebih baik dengan sistem Windows.
+
+---
+
+## Lampiran
+
+### Struktur Repository
+```bash
+osc10e/
+└── ch4/
+    ├── SumTask.java
+    ├── thrd-posix.c
+    └── thrd-win32.c
+```
+
