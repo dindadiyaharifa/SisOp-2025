@@ -6,7 +6,7 @@
 
 ---
 
-## 1. Jelaskan dalam 2 paragraf disertai dengan gambar tentang konsep single thread dan multithread!
+# 1. Jelaskan dalam 2 paragraf disertai dengan gambar tentang konsep single thread dan multithread!
 
 **Jawab:**  
 Single thread adalah model eksekusi program di mana tugas diproses secara berurutan dalam satu alur (thread). Setiap instruksi harus diselesaikan sebelum beralih ke instruksi berikutnya, sehingga cocok untuk tugas sederhana yang tidak memerlukan paralelisasi. Contohnya adalah program yang membaca file, memproses data, lalu menampilkan hasil secara sekuensial. Kelemahannya adalah efisiensi rendah saat menangani operasi I/O atau tugas berat yang menyebabkan blocking, karena thread utama akan terhenti sampai tugas selesai.
@@ -19,7 +19,7 @@ Multithread memungkinkan program menjalankan beberapa thread secara paralel dala
 
 ubah ke md file text berikut Berikut template jawaban dalam format Markdown (`.md`) untuk Programming Exercise tentang thread:
 
-## 2. Programming Exercise: Thread Implementation
+# 2. Programming Exercise: Thread Implementation
 
 ## A. Penerapan Thread pada SumTask.java
 
@@ -110,7 +110,11 @@ int main() {
     return 0;
 }
 ```
-
+### Hasil Eksekusi
+```bash
+dinda@vbox:~/osc1&e/ch4$ ./posix 10
+sum = 55
+```
 ### 2. WinAPI Threads (Windows) - thrd-win32.c
 ```c
 #include <windows.h>
@@ -128,7 +132,11 @@ int main() {
     return 0;
 }
 ```
-
+### Hasil Eksekusi
+```bash
+PS C:\Users\ACER-GK\osc10e\ch4> .\thrd-win32.exe 5
+sum = 15
+```
 ### C Essay Perbandingan
 
 **Perbedaan Utama:**
