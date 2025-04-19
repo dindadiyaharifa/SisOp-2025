@@ -19,22 +19,16 @@ Multithread memungkinkan program menjalankan beberapa thread secara paralel dala
 
 ## 2.	Kerjakan Programming Exercise
 **Jawab:**  
-# Programming Exercise Report: Thread Implementation
+# Laporan Eksperimen Thread di Java dan C
 
-## Table of Contents
-1. [Java Thread Implementation (SumTask.java)](#java-thread-implementation)
-2. [C Thread Implementations](#c-thread-implementations)
-   - [POSIX Threads (Linux)](#posix-threads-linux)
-   - [WinAPI Threads (Windows)](#winapi-threads-windows)
-3. [Execution Results](#execution-results)
-4. [Comparative Analysis](#comparative-analysis)
-5. [Repository Setup](#repository-setup)
-6. [Troubleshooting](#troubleshooting)
-
+## 1. Persiapan Repository
+```bash
+git clone https://github.com/ferryastika/osc10e.git
+cd osc10e
+git pull origin master
+cd ch4
 ---
-
-## Java Thread Implementation
-### SumTask.java
+## 1. Persiapan Repository
 ```java
 import java.util.concurrent.*;
 
