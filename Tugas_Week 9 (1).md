@@ -17,5 +17,77 @@ Multithread memungkinkan program menjalankan beberapa thread secara paralel dala
 
 ![Single vs Multi Thread](https://www.mahirkoding.com/wp-content/uploads/2017/11/Review_Singlevs.Multi-ThreadedProcesses.jpg)
 
+## 2.	Kerjakan Programming Exercise
+**Jawab:**  
+# Programming Exercise Report: Thread Implementation
 
+## Table of Contents
+1. [Java Thread Implementation (SumTask.java)](#java-thread-implementation)
+2. [C Thread Implementations](#c-thread-implementations)
+   - [POSIX Threads (Linux)](#posix-threads-linux)
+   - [WinAPI Threads (Windows)](#winapi-threads-windows)
+3. [Execution Results](#execution-results)
+4. [Comparative Analysis](#comparative-analysis)
+5. [Repository Setup](#repository-setup)
+6. [Troubleshooting](#troubleshooting)
+
+---
+
+## Java Thread Implementation
+### SumTask.java
+```java
+import java.util.concurrent.*;
+
+class SumTask implements Runnable {
+    private int[] array;
+    private int start, end;
+    private long partialSum;
+
+    public SumTask(int[] array, int start, int end) {
+        this.array = array;
+        this.start = start;
+        this.end = end;
+    }
+
+    public long getPartialSum() {
+        return partialSum;
+    }
+
+    @Override
+    public void run() {
+        partialSum = 0;
+        for (int i = start; i < end; i++) {
+            partialSum += array[i];
+        }
+    }
+}
+
+public class SumTask {
+    public static void main(String[] args) throws InterruptedException {
+        int[] array = new int[1000];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = i + 1;
+        }
+        
+        int threadCount = 4;
+        ExecutorService executor = Executors.newFixedThreadPool(threadCount);
+        SumTask[] tasks = new SumTask[threadCount];
+
+        for (int i = 0; i < threadCount; i++) {
+            int start = i * (array.length / threadCount);
+            int end = (i == threadCount - 1) ? array.length : start + (array.length / threadCount);
+            tasks[i] = new SumTask(array, start, end);
+            executor.execute(tasks[i]);
+        }
+
+        executor.shutdown();
+        executor.awaitTermination(1, TimeUnit.MINUTES);
+
+        long totalSum = 0;
+        for (SumTask task : tasks) {
+            totalSum += task.getPartialSum();
+        }
+        System.out.println("The sum is " + totalSum);
+    }
+}
 ---
