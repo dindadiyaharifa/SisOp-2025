@@ -151,6 +151,79 @@ int main() {
    - POSIX menggunakan `pthread_t` sebagai identifier
    - WinAPI menggunakan `HANDLE`
 
+# 3. Kerjakan Chapter 4: Threads & Concurrency – Practice Exercises
+
+## 4.1 Three Programming Examples Where Multithreading Outperforms Single Threading
+
+### 1. Web Server
+Web server seperti Apache atau Nginx memanfaatkan multithreading agar bisa melayani banyak permintaan pengguna secara paralel. Jika menggunakan single thread, hanya satu pengguna bisa dilayani pada satu waktu, menyebabkan delay besar.
+
+### 2. Image Processing
+Aplikasi pengeditan gambar (seperti Photoshop) dapat memproses berbagai filter secara paralel untuk setiap bagian gambar, sehingga mempercepat keseluruhan proses dibanding single thread.
+
+### 3. Parallel File Download
+Aplikasi pengunduh (download manager) bisa mengunduh berbagai bagian file secara bersamaan (multithread), yang jauh lebih cepat dibandingkan mengunduh satu bagian per satu waktu.
+
+---
+
+## 4.2 Amdahl’s Law Speedup Calculation
+
+### Rumus Amdahl’s Law:
+\[
+\text{Speedup} = \frac{1}{(1 - P) + \frac{P}{N}}
+\]
+
+Dengan:
+- \( P = 0.6 \) (komponen paralel)
+- \( N \) = jumlah core
+
+### a) Dua core:
+\[
+\text{Speedup} = \frac{1}{(1 - 0.6) + \frac{0.6}{2}} = \frac{1}{0.4 + 0.3} = \frac{1}{0.7} \approx 1.43
+\]
+
+### b) Empat core:
+\[
+\text{Speedup} = \frac{1}{(1 - 0.6) + \frac{0.6}{4}} = \frac{1}{0.4 + 0.15} = \frac{1}{0.55} \approx 1.82
+\]
+
+---
+
+## 4.3 Task or Data Parallelism in Multithreaded Web Server
+
+Multithreaded web server menunjukkan **task parallelism**, karena setiap thread menangani permintaan yang berbeda dari klien yang berbeda. Setiap tugas adalah mandiri, bukan bagian dari satu data yang dibagi-bagi.
+
+---
+
+## 4.4 User-Level vs Kernel-Level Threads
+
+### Perbedaan:
+
+#### User-Level Threads:
+- Dikelola oleh user-level thread library (bukan oleh OS).
+- Switching antar thread lebih cepat karena tidak perlu interaksi dengan kernel.
+
+#### Kernel-Level Threads:
+- Dikelola langsung oleh sistem operasi.
+- Dapat dieksekusi secara paralel di banyak core.
+
+### Kapan lebih baik?
+- **User-level threads** cocok untuk aplikasi dengan **context switching tinggi** dan tidak membutuhkan paralelisme sejati.
+- **Kernel-level threads** lebih baik untuk aplikasi yang membutuhkan **eksekusi paralel di banyak core**.
+
+---
+
+## 4.5 Kernel Actions During Context-Switch Between Kernel-Level Threads
+
+Saat melakukan context switch antar kernel-level thread, kernel melakukan langkah-langkah berikut:
+
+1. Menyimpan state (register, program counter, stack pointer) dari thread yang sedang berjalan ke PCB (Process Control Block).
+2. Memuat state dari thread tujuan dari PCB ke CPU register.
+3. Update tabel scheduler dan kontrol akses resource jika perlu.
+4. Transfer kontrol eksekusi ke thread baru.
+
+
+---
 **Implementasi pada GitHub Pak Ferry:**
 - [thrd-posix.c](https://github.com/ferryastika/osc10e/blob/master/ch4/thrd-posix.c)
 - [thrd-win32.c](https://github.com/ferryastika/osc10e/blob/master/ch4/thrd-win32.c)
