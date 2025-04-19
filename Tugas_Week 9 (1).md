@@ -82,13 +82,6 @@ public class ParallelSum {
 }
 ```
 
-### Penjelasan
-- **Mekanisme**:
-  - Array dibagi rata ke beberapa thread
-  - `ExecutorService` mengelola thread pool
-- **Keunggulan**:
-  - Pemanfaatan multi-core processor
-  - Waktu eksekusi lebih cepat untuk data besar
 - **Hasil Eksekusi**:
   ```bash
   javac ParallelSum.java
