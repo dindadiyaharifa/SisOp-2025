@@ -15,7 +15,7 @@ Multithread memungkinkan program menjalankan beberapa thread secara paralel dala
 
 ### Ilustrasi Single Thread vs Multithread
 
-![Ilustrasi Single Thread vs Multithread](https://upload.wikimedia.org/wikipedia/commons/6/68/Single_vs_multithreaded_process.png)
-*Sumber: Wikimedia Commons*
+![Ilustrasi Single Thread vs Multithread](https://www.mahirkoding.com/wp-content/uploads/2017/11/Review_Singlevs.Multi-ThreadedProcesses.jpg)
+
 
 ---
