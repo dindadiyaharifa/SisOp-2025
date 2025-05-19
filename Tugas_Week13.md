@@ -1,4 +1,4 @@
-# SJF Scheduling Algorithm
+# SJF Scheduling Algorithm Without Arrival Time
 
 **Nama Kelompok:**  
 1. Dinda Diyah Arifa  
@@ -6,8 +6,6 @@
 3. Yosiyanti Cendekia Sari  
 
 ---
-
-## 1. SJF Scheduling Algorithm Without Arrival Time
 
 ### Code Program:
 ```c
