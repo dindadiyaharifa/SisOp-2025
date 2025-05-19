@@ -1,4 +1,3 @@
-```markdown
 # SJF Scheduling Algorithm
 
 **Nama Kelompok:**  
