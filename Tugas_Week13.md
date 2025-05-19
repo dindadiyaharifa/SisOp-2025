@@ -63,7 +63,7 @@ int main() {
 ```
 
 ### Output Program:  
-![Output Screenshot](media/image1.png)
+![ss output](https://github.com/dindadiyaharifa/SisOp-2025/blob/main/Screenshot%202025-05-19%20144203.png?raw=true)
 
 ---
 
