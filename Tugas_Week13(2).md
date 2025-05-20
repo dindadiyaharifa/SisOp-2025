@@ -1,5 +1,4 @@
 
-```markdown
 # SJF Scheduling Algorithm With Arrival Time
 
 **Nama Kelompok:**
